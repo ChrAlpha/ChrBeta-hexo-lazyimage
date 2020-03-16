@@ -6,9 +6,11 @@ function query(selector) {
 
 var io = new IntersectionObserver(function (entries) {
     entries.forEach(function (entry) {
-        var img = entry.target;
-        img.srcset = img.getAttribute('data-srcset');
-        io.unobserve(entry);
+        if (entry.isIntersecting) {
+            var img = entry.target;
+            img.setAttribute(srcset, img.getAttribute('data-srcset'));
+            io.unobserve(img);
+        }
     });
 });
 
