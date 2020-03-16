@@ -8,7 +8,7 @@ var io = new IntersectionObserver(function (entries) {
     entries.forEach(function (entry) {
         if (entry.isIntersecting) {
             var img = entry.target;
-            img.setAttribute(srcset, img.getAttribute('data-srcset'));
+            img.srcset = img.getAttribute('data-src');
             io.unobserve(img);
         }
     });
